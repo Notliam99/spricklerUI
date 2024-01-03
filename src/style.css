@@ -11,9 +11,61 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 * {
   margin: 0;
   box-sizing: border-box;
 }
+
+/*Nav Bar Css START*/
+#navBar {
+  height: 6rem;
+}
+
+#navBar>nav {
+  height: 100%;
+}
+
+#navBar ul {
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0.2rem solid black;
+  border-radius: 2rem;
+  margin: 0.5rem;
+}
+
+#navBar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+#navBar li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border: 0.2rem solid black;
+  border-radius: 2rem;
+  text-decoration: None;
+  float: right;
+  height: calc(100% - 2 * 0.4rem);
+  margin: 0.4rem;
+  width: 7rem
+    /* padding: 0.2rem; */
+}
+
+#navBar #title {
+  float: left;
+  border-width: 0;
+  width: auto;
+}
+
+/*Nav Bar Css END*/

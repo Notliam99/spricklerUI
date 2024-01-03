@@ -1,5 +1,5 @@
-import page from "./page.html?raw"
+import nav from "./nav.html?raw"
 
-const htmlPages = { 'page': page };
+const htmlPages = { 'nav': nav };
 
 export default htmlPages
