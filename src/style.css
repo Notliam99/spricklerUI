@@ -22,6 +22,7 @@
 /*Nav Bar Css START*/
 #navBar {
   height: 6rem;
+  padding: 0.5rem;
 }
 
 #navBar>nav {
@@ -31,12 +32,22 @@
 #navBar ul {
   height: 100%;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
   border: 0.2rem solid black;
   border-radius: 2rem;
-  margin: 0.5rem;
+}
+
+#navBar li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid black;
+  border-radius: 2rem;
+  text-decoration: None;
+  float: right;
+  height: calc(100% - 2 * 0.4rem);
+  margin: 0.4rem;
+  width: 7rem;
+  --list-padding: 0.5rem;
 }
 
 #navBar a {
@@ -45,21 +56,16 @@
   justify-content: center;
   height: 100%;
   width: 100%;
+  color: inherit;
+  text-decoration: none;
 }
 
-#navBar li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  border: 0.2rem solid black;
-  border-radius: 2rem;
-  text-decoration: None;
-  float: right;
-  height: calc(100% - 2 * 0.4rem);
-  margin: 0.4rem;
-  width: 7rem
-    /* padding: 0.2rem; */
+#navBar a>h1 {
+  padding: var(--list-padding);
+}
+
+#navBar a:hover {
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 }
 
 #navBar #title {
@@ -69,3 +75,26 @@
 }
 
 /*Nav Bar Css END*/
+
+/*MANUAL CONTROLL Css START*/
+#manual-control {
+  display: flex;
+  flex-direction: row;
+  height: 20rem;
+  width: 100%;
+}
+
+#manual-control .button {
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+#manual-control button {
+  height: 100%;
+  width: 100%;
+}
+
+#manual-control button:hover {
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
