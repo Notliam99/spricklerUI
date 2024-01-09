@@ -34,6 +34,7 @@
   list-style-type: none;
   border: 0.2rem solid black;
   border-radius: 2rem;
+  padding: 0;
 }
 
 #navBar li {
@@ -46,7 +47,7 @@
   float: right;
   height: calc(100% - 2 * 0.4rem);
   margin: 0.4rem;
-  width: 7rem;
+  padding: 0.3rem;
   --list-padding: 0.5rem;
 }
 
@@ -93,6 +94,8 @@
 #manual-control button {
   height: 100%;
   width: 100%;
+  border: 0.2rem solid black;
+  border-radius: 2rem;
 }
 
 #manual-control button:hover {

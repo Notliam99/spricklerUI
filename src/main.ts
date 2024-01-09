@@ -5,8 +5,14 @@ import htmlPages from './pages'
 var document_inserted = false
 
 function html_document(pages: Object) {
-  let header: string = pages["header"]
-  let main: string = pages["main"]
+  let header: string = <String>(pages["header"])
+  // let main: string = pages["main"]
+  let main: string = ''
+  try {
+    main = <String>(pages[location.pathname])
+  } catch (error) {
+    location.pathname = '/'
+  }
   let footer: string = ''
 
   return {
