@@ -1,5 +1,6 @@
 import './style.css'
 import html from './html'
+import pages from './pages'
 
 
 function html_document(html: { [key: string]: any }) {
@@ -35,4 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     temp!.innerHTML = htmlDoc[Object.keys(htmlDoc)[index]]
     document.querySelector<HTMLDivElement>('#app')!.append(temp)
   }
+  // adds event lisseners to the buttons
+  pages()
 })
