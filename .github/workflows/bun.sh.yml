@@ -24,6 +24,8 @@ jobs:
       env: 
         token: ${{ github.token }}
       run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
         git checkout master -- .
     - uses: oven-sh/setup-bun@v1
       with:
