@@ -15,8 +15,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        ref: builds
     - name: Note The Time
       run: |
         echo "DATE = $(date)" >> $GITHUB_ENV
