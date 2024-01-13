@@ -27,6 +27,7 @@ jobs:
       env: 
         token: ${{ github.token }}
       run: |
+        git config --global credential.helper '!f() { sleep 1; echo "username=${{ github.actor }} token=${{ github.token }}"; }; f'
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
         cp ./dist ./public -r
