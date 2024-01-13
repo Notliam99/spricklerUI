@@ -1,8 +1,6 @@
 import './style.css'
-/* import typescriptLogo from './typescript.svg' */
 import html from './html'
 
-var document_inserted = false
 
 function html_document(html: { [key: string]: any }) {
   let header: string = ''
