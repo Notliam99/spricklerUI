@@ -1,6 +1,6 @@
 # action builds and pushes the satic files to build branch
 
-name: Node.js CI
+name: Bun.sh CI
 
 on:
   push:
@@ -18,13 +18,11 @@ jobs:
     - name: Note The Time
       run: |
         echo "date = $(date)" >> $GITHUB_ENV
-    - name: Use Node.js@latest
-      uses: actions/setup-node@v3
+    - uses: oven-sh/setup-bun@v1
       with:
-        node-version: latest
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build
+        bun-version: latest
+    - run: bun install
+    - run: bun run build
     - name: push static files
       uses: GuillaumeFalourd/git-commit-push@v1.3
       with:
