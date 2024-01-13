@@ -29,5 +29,5 @@ jobs:
         name: ${{ github.actor }}
         commit_message: build ${{ env.date }}
         target_branch: builds
-        files: dist
+        files: ./dist/
         access_token: ${{ github.token }}
