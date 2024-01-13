@@ -27,7 +27,7 @@ jobs:
       env: 
         token: ${{ github.token }}
       run: |
-        cp ./dist ./public
+        cp ./dist ./public -r
         git add public
         git commit -m "build@(${{ env.DATE }})"
         git push origin/builds
