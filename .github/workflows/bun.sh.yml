@@ -27,7 +27,7 @@ jobs:
       env: 
         token: ${{ github.token }}
       run: |
-        git config --global credential.helper '!f() { sleep 1; echo "username=${{ github.actor }} token=${{ github.token }}"; }; f'
+        git remote set-url origin https://${{ github.token }}@github.com/Notliam99/spricklerUI.git
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
         cp ./dist ./public -r
