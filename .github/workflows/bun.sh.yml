@@ -33,4 +33,4 @@ jobs:
         cp ./dist ./public -r
         git add public
         git commit -m "build@(${{ env.DATE }})"
-        git push origin/builds
+        git push origin builds
