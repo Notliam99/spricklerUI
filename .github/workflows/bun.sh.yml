@@ -19,24 +19,17 @@ jobs:
         ref: builds
     - name: Note The Time
       run: |
-        echo "date = $(date)" >> $GITHUB_ENV
-    - name: get files
-      env: 
-        token: ${{ github.token }}
-      run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "<>"
-        git checkout master .
+        echo "DATE = $(date)" >> $GITHUB_ENV
     - uses: oven-sh/setup-bun@v1
       with:
         bun-version: latest
     - run: bun install
     - run: bun run build
-    - name: push static files
-      uses: GuillaumeFalourd/git-commit-push@v1.3
-      with:
-        name: ${{ github.actor }}
-        commit_message: build ${{ env.date }}
-        files: dist
-        remote_repository: https://github.com/Notliam99/spricklerUI
-        access_token: ${{ github.token }}
+    - name: get files
+      env: 
+        token: ${{ github.token }}
+      run: |
+        cp ./dist ./public
+        git add public
+        git commit -m "build@(${{ env.DATE }})"
+        git push origin/builds
