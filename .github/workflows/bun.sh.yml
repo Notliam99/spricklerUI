@@ -23,8 +23,8 @@ jobs:
     - name: get files
       env: 
         token: ${{ github.token }}
-        run: |
-          git checkout master -- .
+      run: |
+        git checkout master -- .
     - uses: oven-sh/setup-bun@v1
       with:
         bun-version: latest
