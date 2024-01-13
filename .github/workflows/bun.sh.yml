@@ -27,6 +27,8 @@ jobs:
       env: 
         token: ${{ github.token }}
       run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
         cp ./dist ./public -r
         git add public
         git commit -m "build@(${{ env.DATE }})"
