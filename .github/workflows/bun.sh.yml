@@ -38,6 +38,8 @@ jobs:
       uses: antongolub/action-setup-bun@v1 # or @v1.x.x
       with:
         token: ${{ github.token }}
+      env:
+        HOME: '/home/runner/work/spricklerUI/spricklerUI/master'
     - run: bun install
     - run: bun run build
     - name: exit master make builds dir
