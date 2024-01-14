@@ -28,7 +28,7 @@ jobs:
       run: |
         tree
         cd master
-        ls 
+        tree 
     - name: Note The Time
       run: |
         echo "date = $(date)" >> $GITHUB_ENV 
