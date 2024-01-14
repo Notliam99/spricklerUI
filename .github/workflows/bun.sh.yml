@@ -25,7 +25,10 @@ jobs:
         ref: builds
         path: builds
     - name: change to master
-      run: cd master
+      run: |
+        ls 
+        ls ..
+        cd master
     - name: Note The Time
       run: |
         echo "date = $(date)" >> $GITHUB_ENV 
