@@ -34,10 +34,11 @@ jobs:
     - name: Note The Time
       run: |
         echo "date = $(date)" >> $GITHUB_ENV 
-    - uses: oven-sh/setup-bun@v1
+    - name: setup bun.sh
+      working-directory: ./master
+      uses: oven-sh/setup-bun@v1
       with:
-        bun-version: latest
-      working-directory: master
+        bun-version: latest 
     - run: bun install
     - run: bun run build
     - name: exit master make builds dir
