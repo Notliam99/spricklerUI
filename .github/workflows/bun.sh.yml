@@ -14,23 +14,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: make and change to directory
+      run: |
+        mkdir master
+        cd ./master
+    - name: get the master branch
+      uses: actions/checkout@v4
+      with:
+        ref: master
     - name: Note The Time
       run: |
-        echo "DATE = $(date)" >> $GITHUB_ENV
+        echo "date = $(date)" >> $GITHUB_ENV 
     - uses: oven-sh/setup-bun@v1
       with:
         bun-version: latest
     - run: bun install
     - run: bun run build
-    - name: get files
-      env: 
-        token: ${{ github.token }}
+    - name: exit master make builds dir
       run: |
-        git remote set-url origin https://${{ github.token }}@github.com/Notliam99/spricklerUI.git
-        git config user.name "GitHub Actions Bot"
-        git config user.email "<>"
-        cp ./dist ./public -r
-        git add public
-        git commit -m "build@(${{ env.DATE }})"
-        git push origin builds
+        cd ..
+        mkdir builds
+        cd builds
+    - name: get the builds branch
+      uses: actions/checkout@v4
+      with:
+        ref: builds
+    - name: copy the buils
+      run: |
+        cp ../master/dist .
+    - name: push static files
+      uses: GuillaumeFalourd/git-commit-push@v1.3
+      with:
+        name: ${{ github.actor }}
+        commit_message: build ${{ env.date }}
+        files: dist
+        remote_repository: https://github.com/Notliam99/spricklerUI
+        access_token: ${{ github.token }}
