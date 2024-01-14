@@ -18,42 +18,32 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: master
-        path: master
-    - name: get the builds branch
-      uses: actions/checkout@v4
-      with:
-        ref: builds
-        path: builds
-    - name: change to master
-      run: |
-        tree
-        cd master
-        tree
-        pwd
-        HOME=$(pwd)
-    - name: Note The Time
-      run: |
-        echo "date = $(date)" >> $GITHUB_ENV 
     - name: setup bun.sh
       working-directory: ./master
       uses: oven-sh/setup-bun@v1
       with:
         bun-version: latest 
-    - run: bun install
-    - run: bun run build
-    - name: exit master make builds dir
-      run: |
-        cd ..
-        cd builds
-    - name: copy the buils
-      run: |
-        ls ..
-        cp ../master/dist .
+    - run: |
+        bun install
+        bun run build
+
+    - run: mkdir -p path/to/artifact
+    - run: echo hello > path/to/artifact/world.txt
+    - uses: actions/upload-artifact@v4
+      with:
+        name: ${{ github.sha }}
+        path: ./dist
+  Push:
+    - uses: actions/download-artifact@v4
+  with:
+    name: ${{ github.sha }}
+    path: ./dist
+    steps:
     - name: push static files
       uses: GuillaumeFalourd/git-commit-push@v1.3
       with:
         name: ${{ github.actor }}
-        commit_message: build ${{ env.date }}
+        commit_message: build ${{ github.sha }}
         files: dist
         remote_repository: https://github.com/Notliam99/spricklerUI
         access_token: ${{ github.token }}
