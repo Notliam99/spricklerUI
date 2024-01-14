@@ -23,9 +23,7 @@ jobs:
       uses: oven-sh/setup-bun@v1
       with:
         bun-version: latest 
-    - run: |
-        bun install
-        bun run build
+    - run: bun install && bun run build
 
     - run: mkdir -p path/to/artifact
     - run: echo hello > path/to/artifact/world.txt
