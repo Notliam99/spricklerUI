@@ -13,15 +13,19 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - name: make and change to directory
-      run: |
-        mkdir master
-        cd ./master
+    steps: 
     - name: get the master branch
       uses: actions/checkout@v4
       with:
         ref: master
+        path: master
+    - name: get the builds branch
+      uses: actions/checkout@v4
+      with:
+        ref: builds
+        path: builds
+    - name: change to master
+      run: cd master
     - name: Note The Time
       run: |
         echo "date = $(date)" >> $GITHUB_ENV 
@@ -33,12 +37,7 @@ jobs:
     - name: exit master make builds dir
       run: |
         cd ..
-        mkdir builds
         cd builds
-    - name: get the builds branch
-      uses: actions/checkout@v4
-      with:
-        ref: builds
     - name: copy the buils
       run: |
         ls ..
