@@ -30,8 +30,7 @@ jobs:
         cd master
         tree
         pwd
-      env:
-        HOME: .
+        HOME=$(pwd)
     - name: Note The Time
       run: |
         echo "date = $(date)" >> $GITHUB_ENV 
