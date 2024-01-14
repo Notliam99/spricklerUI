@@ -34,9 +34,10 @@ jobs:
     - name: Note The Time
       run: |
         echo "date = $(date)" >> $GITHUB_ENV 
-    - uses: oven-sh/setup-bun@v1
+    - name: Setup Bun Runtime
+      uses: antongolub/action-setup-bun@v1 # or @v1.x.x
       with:
-        bun-version: latest
+        token: ${{ github.token }}
     - run: bun install
     - run: bun run build
     - name: exit master make builds dir
