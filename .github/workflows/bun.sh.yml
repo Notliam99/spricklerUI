@@ -34,12 +34,10 @@ jobs:
     - name: Note The Time
       run: |
         echo "date = $(date)" >> $GITHUB_ENV 
-    - name: Setup Bun Runtime
-      uses: antongolub/action-setup-bun@v1 # or @v1.x.x
+    - uses: oven-sh/setup-bun@v1
       with:
-        token: ${{ github.token }}
-      env:
-        HOME: '/home/runner/work/spricklerUI/spricklerUI/master'
+        bun-version: latest
+      working-directory: master
     - run: bun install
     - run: bun run build
     - name: exit master make builds dir
