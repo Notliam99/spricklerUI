@@ -26,7 +26,7 @@ jobs:
         path: builds
     - name: change to master
       run: |
-        ls
+        tree
         cd master
         ls 
     - name: Note The Time
