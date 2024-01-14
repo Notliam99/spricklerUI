@@ -34,16 +34,17 @@ jobs:
         name: ${{ github.sha }}
         path: ./dist
   Push:
-    - uses: actions/download-artifact@v4
-  with:
-    name: ${{ github.sha }}
-    path: ./dist
     steps:
+    - uses: actions/download-artifact@v4
+      with:
+        name: ${{ github.sha }}
+        path: ./dist
+    
     - name: push static files
       uses: GuillaumeFalourd/git-commit-push@v1.3
       with:
         name: ${{ github.actor }}
-        commit_message: build ${{ github.sha }}
+        commit_message: build ${{ env.date }}
         files: dist
         remote_repository: https://github.com/Notliam99/spricklerUI
         access_token: ${{ github.token }}
