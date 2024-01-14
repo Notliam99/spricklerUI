@@ -41,6 +41,7 @@ jobs:
         ref: builds
     - name: copy the buils
       run: |
+        ls ..
         cp ../master/dist .
     - name: push static files
       uses: GuillaumeFalourd/git-commit-push@v1.3
