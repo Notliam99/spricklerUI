@@ -24,9 +24,6 @@ jobs:
       with:
         bun-version: latest 
     - run: bun install && bun run build
-
-    - run: mkdir -p path/to/artifact
-    - run: echo hello > path/to/artifact/world.txt
     - uses: actions/upload-artifact@v4
       with:
         name: ${{ github.sha }}
