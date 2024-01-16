@@ -48,8 +48,8 @@ jobs:
         path: ./dist
     
     - name: push static files 
-      uses: actions-js/push@master
-      with:
-        author_name: '${{ github.actor }}'
-        github_token: ${{ github.token }}
-        branch: 'builds'
+      uses: actions4git/setup-git@v1
+      run: |
+        git add .
+        git commit -m 'autopush ${date}'
+        git push
