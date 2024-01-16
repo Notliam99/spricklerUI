@@ -50,5 +50,6 @@ jobs:
     - name: push static files 
       uses: actions-js/push@master
       with:
+        author_name: ${{ github.actor }}
         github_token: ${{ github.token }}
         branch: 'builds'
