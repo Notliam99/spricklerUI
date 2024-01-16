@@ -48,6 +48,8 @@ jobs:
         path: ./dist
      
     - uses: actions4git/setup-git@v1
+      with:
+        user: ${{ github.actor }}
     - run: |
         git add .
         git commit -m 'autopush ${date}'
