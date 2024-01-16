@@ -35,6 +35,8 @@ jobs:
   Push:
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      contents: write
 
     steps:
     - name: get the builds branch
