@@ -45,7 +45,7 @@ jobs:
         ref: builds
     
     - name: get time
-      run: echo "DATE = $(date)" >> "$GITHUB_ENV"
+      run: echo "date=$(date)" >> "$GITHUB_ENV"
 
     - uses: actions/download-artifact@v4
       with:
@@ -55,5 +55,5 @@ jobs:
     - uses: actions4git/setup-git@v1 
     - run: |
         git add .
-        git commit -m 'autopush ${{ env.DATE }}'
+        git commit -m 'autopush ${{ env.date }}'
         git push
