@@ -47,13 +47,8 @@ jobs:
         name: ${{ github.sha }}
         path: ./dist
     
-    - name: push static files
-      uses: GuillaumeFalourd/git-commit-push@v1.3
+    - name: push static files 
+      uses: actions-js/push@master
       with:
-        name: ${{ github.actor }}
-        commit_message: build ${{ env.date }}
-        files: ./dist
-        remote_repository: https://github.com/Notliam99/spricklerUI
-        access_token: ${{ github.token }}
-        target_branch: builds
-
+        github_token: ${{ github.token }}
+        branch: 'builds'
