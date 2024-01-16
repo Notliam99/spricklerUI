@@ -24,6 +24,9 @@ jobs:
         bun-version: latest 
     
     - run: bun install && bun run build
+
+    - name: commit.sha
+      run: echo "${{ github.sha }}" > ./dist/github.sha.txt
   
     - uses: actions/upload-artifact@v4
       with:
