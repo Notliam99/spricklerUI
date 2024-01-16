@@ -52,6 +52,6 @@ jobs:
       with:
         name: ${{ github.actor }}
         commit_message: build ${{ env.date }}
-        files: dist
+        files: ./dist
         remote_repository: https://github.com/Notliam99/spricklerUI
         access_token: ${{ github.token }}
