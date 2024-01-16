@@ -55,5 +55,5 @@ jobs:
     - uses: actions4git/setup-git@v1 
     - run: |
         git add .
-        git commit -m 'autopush ${{ env.date }}'
+        git commit -m 'autopush @[${{ env.date }}]'
         git push
