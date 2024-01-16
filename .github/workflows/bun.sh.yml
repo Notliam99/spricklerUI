@@ -46,10 +46,9 @@ jobs:
       with:
         name: ${{ github.sha }}
         path: ./dist
-    
-    - name: push static files 
-      uses: actions4git/setup-git@v1
-      run: |
+     
+    - uses: actions4git/setup-git@v1
+    - run: |
         git add .
         git commit -m 'autopush ${date}'
         git push
