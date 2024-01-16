@@ -49,9 +49,7 @@ jobs:
         name: ${{ github.sha }}
         path: ./dist
      
-    - uses: actions4git/setup-git@v1
-      with:
-        user: ${{ github.actor }}
+    - uses: actions4git/setup-git@v1 
     - run: |
         git add .
         git commit -m 'autopush ${date}'
