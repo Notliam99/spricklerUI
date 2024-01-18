@@ -8,7 +8,7 @@ function find_buttons() {
   return buttons
 }
 
-async function button_status_colour(buttons) {
+async function button_status_colour(buttons: Array<any>) {
   console.log(buttons)
   try {
     const response = await fetch(
@@ -57,25 +57,25 @@ async function button_toggle(id: string) {
   }
 }
 
-async function button_0(event: object) {
+async function button_0(event: { [key: string]: any }) {
   button_toggle('0')
   await button_status_colour(event.currentTarget.buttons)
   console.log("button_0 click", event)
 }
 
-async function button_1(event: object) {
+async function button_1(event: { [key: string]: any }) {
   button_toggle('1')
-  await button_status_colour(event.currentTarget.buttons)
+  await button_status_colour(Array<any>(event.currentTarget.buttons))
   console.log("button_1 click", event)
 }
 
-async function button_2(event: object) {
+async function button_2(event: { [key: string]: any }) {
   button_toggle('2')
   await button_status_colour(event.currentTarget.buttons)
   console.log("button_2 click", event)
 }
 
-async function button_3(event: object) {
+async function button_3(event: { [key: string]: any }) {
   button_toggle('3')
   await button_status_colour(event.currentTarget.buttons)
   console.log("button_3 click", event)
@@ -89,7 +89,7 @@ const button_funcs: any = [
 ]
 
 export default function addLisseners() {
-  let buttons = find_buttons()
+  let buttons: Array<any> = find_buttons()
   button_status_colour(buttons)
   try {
     if (buttons.length != button_funcs.length) {
@@ -99,7 +99,7 @@ export default function addLisseners() {
     for (let index = 0; index < buttons.length; index++) {
       const element = buttons[index];
       const func = button_funcs[index]
-      const event_lissener = element.addEventListener('click', func)
+      element.addEventListener('click', func)
       element.buttons = buttons
     }
 
