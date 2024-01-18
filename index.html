@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Water</title>
     <script type="module">
-const d=`<div id='navBar'>
+const l=`<div id='navBar'>
   <nav>
     <ul>
       <li id='title'>
@@ -27,7 +27,7 @@ const d=`<div id='navBar'>
     </ul>
   </nav>
 </div>
-`,u=`<div id="manual-control">
+`,d=`<div id="manual-control">
   <div class="button">
     <button id="button-0">
       <h1>1</h1>
@@ -52,7 +52,7 @@ const d=`<div id='navBar'>
     </button>
   </div>
 </div>
-`,l={header:{navBar:d},main:{"/":u}};function s(t){console.log("button_0 click",t)}function a(t){console.log("button_1 click",t)}function f(t){console.log("button_2 click",t)}function b(t){console.log("button_3 click",t)}function h(){var t,o,i,c;(t=document.getElementById("button-0"))==null||t.addEventListener("click",s),(o=document.getElementById("button-1"))==null||o.addEventListener("click",a),(i=document.getElementById("button-2"))==null||i.addEventListener("click",f),(c=document.getElementById("button-3"))==null||c.addEventListener("click",b)}function m(){h()}function p(t){let o="";for(let n=0;n<Object.keys(t.header).length;n++)o+=t.header[Object.keys(t.header)[n]];let i="";try{if(typeof t.main[location.pathname]>"u")throw"path not found";i=t.main[location.pathname]}catch(n){console.warn(n),location.pathname="/"}return{header:o,main:i,footer:""}}document.addEventListener("DOMContentLoaded",()=>{let t=p(l);console.log(Object.keys(t));for(let o=0;o<Object.keys(t).length;o++){const i=document.createElement(Object.keys(t)[o]);i.innerHTML=t[Object.keys(t)[o]],document.querySelector("#app").append(i)}m()});
+`,f={header:{navBar:l},main:{"/":d}};function h(){var t=[document.getElementById("button-0"),document.getElementById("button-1"),document.getElementById("button-2"),document.getElementById("button-3")];return t}async function s(t){console.log(t);try{const e=await fetch("/sprinckler/status?id=all",{method:"GET",headers:new Headers({"content-type":"application/json"})});if(!e.ok)throw new Error(`HTTP error, status = ${e.status}`);if(await e.headers.get("content-type")!="application/json")throw new Error(`content-type Error expected "application/json", status = ${e.headers.get("content-type")}`);var n=await e.json()}catch(e){console.warn(e);return}for(let e=0;e<Object.keys(n).length;e++){var c=n[Object.keys(n)[e]];c.status?t[e].style.backgroundColor="green":t[e].style.backgroundColor="red"}}async function a(t){try{const n=await fetch(`/sprinckler/toggle?id=${t}`,{method:"POST"});if(!n.ok)throw new Error(`HTTP error, status = ${n.status}`)}catch(n){console.warn(n)}}async function b(t){a("0"),await s(t.currentTarget.buttons),console.log("button_0 click",t)}async function p(t){a("1"),await s(Array(t.currentTarget.buttons)),console.log("button_1 click",t)}async function g(t){a("2"),await s(t.currentTarget.buttons),console.log("button_2 click",t)}async function m(t){a("3"),await s(t.currentTarget.buttons),console.log("button_3 click",t)}const u=[b,p,g,m];function y(){let t=h();s(t);try{if(t.length!=u.length)throw new Error(`Length of ${u.length<t.length?"button_funcs is less than the amount of buttons":"amount of parsed buttons is less than amount of button functions"}`);for(let n=0;n<t.length;n++){const c=t[n],e=u[n];c.addEventListener("click",e),c.buttons=t}}catch(n){console.error(n)}}function w(){y()}function v(t){let n="";for(let o=0;o<Object.keys(t.header).length;o++)n+=t.header[Object.keys(t.header)[o]];let c="";try{if(typeof t.main[location.pathname]>"u")throw"path not found";c=t.main[location.pathname]}catch(o){console.warn(o),location.pathname="/"}return{header:n,main:c,footer:""}}document.addEventListener("DOMContentLoaded",()=>{let t=v(f);console.log(Object.keys(t));for(let n=0;n<Object.keys(t).length;n++){const c=document.createElement(Object.keys(t)[n]);c.innerHTML=t[Object.keys(t)[n]],document.querySelector("#app").append(c)}w()});
 
 </script>
     <style>
