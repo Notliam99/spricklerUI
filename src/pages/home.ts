@@ -65,7 +65,7 @@ async function button_0(event: { [key: string]: any }) {
 
 async function button_1(event: { [key: string]: any }) {
   button_toggle('1')
-  await button_status_colour(Array<any>(event.currentTarget.buttons))
+  await button_status_colour(event.currentTarget.buttons)
   console.log("button_1 click", event)
 }
 
